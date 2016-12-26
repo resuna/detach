@@ -1,0 +1,35 @@
+.TH DETACH 1
+.SH NAME
+detach \- when it absolutely has to run!
+.SH SYNOPSIS
+.B detach
+[-va] [ -f
+.I filename
+]
+.I command
+[
+.I args
+]
+.SH DESCRIPTION
+.B detach.
+runs a command in a whole new
+process group. Once you have detached a process, you can airmail
+your terminal to Brazil. It won't care.
+.SH OPTIONS
+.IP -v
+Natter at you about the command it's running, both on the terminal and in the
+log file.
+.IP "-f \fIfilename\fR"
+By default, detach redirects output to "detach.out". You can
+override this with the '-f' option. Really important if you
+don't have write access in the current directory.
+.IP -a
+Append to the logfile instead of overwriting it.
+.SH AUTHOR
+Peter da Silva
+.SH NOTES
+.B Detach
+uses
+.B execvp 
+to execute the command. If you want to detach multiple commands
+use \fBdetach \fIoptions\fB sh -c\fR '\fIcommand\fR'...
